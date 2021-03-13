@@ -13,7 +13,7 @@ if (url.indexOf("/user/profile") != -1) {
     obj["data"]["userVod"]["hasPrivilege"] = true;
     obj["data"]["dramaDetail"]["season"]["downloadBlock"] = false;
     obj["data"]["qualityConfig"]["sortedItems"] = [1, 4, 37, 43, 23];
-    for (let i = 0; i < obj["data"]["qualityConfig"]["sortedItems"].length; i++){
+    for (i = 0; i < obj["data"]["qualityConfig"]["sortedItems"].length; i++){
         obj["data"]["qualityConfig"]["sortedItems"][i]["canPlay"] = true;
     }
 }
