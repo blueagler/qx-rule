@@ -1,6 +1,7 @@
 //^https:\/\/api.rr.tv(\/user\/profile*|\/drama\/app\/get_combined_drama_detail*)
 
-let { body, url } = $response;
+var body = $response.body;
+var url = $response.url;
 
 if (url.indexOf("/user/profile") != -1) {
     var obj = JSON.parse(body);
