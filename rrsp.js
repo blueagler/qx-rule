@@ -12,17 +12,14 @@ if (url.indexOf("/user/profile") != -1) {
     obj["data"]["userVod"]["hasPrivilege"] = true;
     obj["data"]["dramaDetail"]["season"]["downloadBlock"] = false;
     obj["data"]["dramaDetail"]["season"]["feeMode"] = "free";
-    obj["data"]["qualityConfig"]["sortedItems"] = [1, 4, 37, 43, 23];
-    obj["data"]["qualityConfig"]["sortedItems"][0]["canPlay"] = true;
-    obj["data"]["qualityConfig"]["sortedItems"][1]["canPlay"] = true;
-    obj["data"]["qualityConfig"]["sortedItems"][2]["canPlay"] = true;
-    obj["data"]["qualityConfig"]["sortedItems"][3]["canPlay"] = true;
+    for (i = 0; i < obj["data"]["qualityConfig"]["sortedItems"].length; i++){
+        obj["data"]["qualityConfig"]["sortedItems"][i]["canPlay"] = true;
+    }
 } else if (url.indexOf("/watch/v4/priority_video_quality/get_priority_video_quality_config") != -1) {
     var obj = JSON.parse(body);
-    obj["data"]["qualityConfig"]["sortedItems"][0]["canPlay"] = true;
-    obj["data"]["qualityConfig"]["sortedItems"][1]["canPlay"] = true;
-    obj["data"]["qualityConfig"]["sortedItems"][2]["canPlay"] = true;
-    obj["data"]["qualityConfig"]["sortedItems"][3]["canPlay"] = true;
+    for (i = 0; i < obj["data"]["sortedItems"].length; i++){
+        obj["data"]["sortedItems"][i]["canPlay"] = true;
+    }
 }
 body = JSON.stringify(obj);
 $done({ body });
