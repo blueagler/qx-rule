@@ -1,5 +1,4 @@
-//^https:\/\/api.rr.tv(\/user\/profile*|\/drama\/app\/get_combined_drama_detail*)
-
+//^https:\/\/api.rr.tv(\/user\/profile*|\/drama\/app\/get_combined_drama_detail*|\/watch\/v4\/priority_video_quality\/get_priority_video_quality_config*)
 var body = $response.body;
 var url = $request.url;
 
@@ -15,6 +14,11 @@ if (url.indexOf("/user/profile") != -1) {
     obj["data"]["qualityConfig"]["sortedItems"] = [1, 4, 37, 43, 23];
     for (i = 0; i < obj["data"]["qualityConfig"]["sortedItems"].length; i++){
         obj["data"]["qualityConfig"]["sortedItems"][i]["canPlay"] = true;
+    }
+} else if (url.indexOf("/watch/v4/priority_video_quality/get_priority_video_quality_config") != -1) {
+    var obj = JSON.parse(body);
+    for (i = 0; i < obj["data"]["sortedItems"].length; i++){
+        obj["data"]["sortedItems"][i]["canPlay"] = true;
     }
 }
 body = JSON.stringify(obj);
