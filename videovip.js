@@ -10,9 +10,7 @@ if (url.indexOf("passport.iqiyi.com") != -1) {
   obj["data"]["vip_list"][0]["deadline"]["t"] = 99999999999999;
   obj["data"]["vip_list"][0]["level"] = "999";
   obj["data"]["vip_list"][0]["status"] = "1";
-}
-//芒果TV
-if (url.indexOf("nuc.api.mgtv.com") != -1) {
+} else if (url.indexOf("nuc.api.mgtv.com") != -1) {
   var obj = JSON.parse(body);
   obj["data"]["vipinfo"]["isvip"] = 1;
   obj["data"]["vipinfo"]["type"] = "2";
