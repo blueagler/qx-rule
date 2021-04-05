@@ -1,6 +1,7 @@
 //^https:\/\/(passport.iqiyi.com\/apis\/user\/info.action*|nuc.api.mgtv.com\/GetUserInfo*)
-let { body, url } = $response;
-let obj;
+var body = $response.body;
+var url = $request.url;
+var obj;
 //爱奇艺
 if ((url.indexOf("passport.iqiyi.com") = -1)) {
   obj = JSON.parse(body);
