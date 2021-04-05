@@ -1,9 +1,8 @@
 //^https:\/\/(passport.iqiyi.com\/apis\/user\/info.action*|nuc.api.mgtv.com\/GetUserInfo*)
-var body = $response.body;
-var url = $request.url;
-var obj;
+let { body, url } = $response;
+let obj;
 //爱奇艺
-if ((url.indexOf("passport.iqiyi.com") = -1)) {
+if (url.indexOf("passport.iqiyi.com") != -1) {
   obj = JSON.parse(body);
   obj["data"]["vip_list"][0]["longestDeadline"]["t"] = 99999999999999;
   obj["data"]["vip_list"][0]["autoRenew"] = "1";
@@ -13,7 +12,7 @@ if ((url.indexOf("passport.iqiyi.com") = -1)) {
   obj["data"]["vip_list"][0]["status"] = "1";
 }
 //芒果TV
-if ((url.indexOf("nuc.api.mgtv.com") = -1)) {
+if (url.indexOf("nuc.api.mgtv.com") != -1) {
   obj = JSON.parse(body);
   obj["data"]["vipinfo"]["isvip"] = 1;
   obj["data"]["vipinfo"]["type"] = "2";
