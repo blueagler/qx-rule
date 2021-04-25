@@ -1,8 +1,8 @@
-//^https:\/\/www.xiaohongshu.com\/api\/sns\/v6/\message\/detect?source=discovery
+//^https:\/\/www.xiaohongshu.com\/api\/sns\/v6/\message\/detect*
 var body = $response.body;
 var url = $request.url;
 
-if (url.indexOf("https://www.xiaohongshu.com/api/sns/v6/message/detect?source=discovery") != -1) {
+if (url.indexOf("www.xiaohongshu.com/api/sns/v6/message/detect") != -1) {
     var obj = JSON.parse(body);
     obj["data"]["private_letter_count"] = 9999;
     obj["data"]["you"]["likes"] = 9999;
