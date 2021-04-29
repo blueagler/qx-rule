@@ -1,4 +1,4 @@
-//^https:\/\/(dict|wow).youdao.com\/(vip\/user\/status|dictserver\/voiceGuide\/(userTry*|rank*)|\/user\/home*)
+//^https:\/\/(dict|wow).youdao.com\/(vip\/user\/status|dictserver\/voiceGuide\/(userTry*|rank*)|user\/home*)
 var body = $response.body;
 var url = $request.url;
 
