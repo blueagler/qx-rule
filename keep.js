@@ -17,11 +17,11 @@ if (url.indexOf("account/v2/dashboard") != -1) {
     obj["data"]["gmtExpire"] = 4102243200000;
     obj["data"]["totalEffectiveDays"] = 9999;
     obj["data"]["currentEffectiveDays"] = 9999;
-    obj["data"]["status"] = 2;
+    obj["data"]["status"] = 1;
     obj["data"]["membershipType"] = "ANNUAL_CARD";
 } else if (url.indexOf("kprime/v2/home/complete") != -1){
     obj["data"]["memberInfo"]["gmtExpire"] = 4102243200000;
-    obj["data"]["memberInfo"]["status"] = 2;
+    obj["data"]["memberInfo"]["status"] = 1;
 }
 body = JSON.stringify(obj);
 $done({body});
