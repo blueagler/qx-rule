@@ -4,7 +4,7 @@ let [{body}, {url}] = [$response, $request],
 if (url.indexOf("account/v2/dashboard") != -1) {
     obj["data"]["level"] = 5;
     obj["data"]["goal"] = 999;
-    for (i = 0; i < obj["data"]["permissions"].length; i++) {
+    for (let i in obj["data"]["permissions"]){
         obj["data"]["permissions"][i]["status"] = true;
         obj["data"]["permissions"][i]["kgLevel"] = 5;
     }
