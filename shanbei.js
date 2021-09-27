@@ -12,7 +12,6 @@ if (url.indexOf("wordsapp/vip/user_item/status") != -1) {
         "user_id" : true,
         "due_date" : "Austin已破解"
       }
-      
 }else if (url.indexOf("abc/applets/user_applets") != -1) {
     obj = {
         "objects" : [
