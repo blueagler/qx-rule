@@ -5,17 +5,59 @@ obj = JSON.parse(body);
 if (url.indexOf("wordsapp/vip/user_item/status") != -1) {
     obj["status"] = "WITHIN_PERIOD";
 } else if (url.indexOf("wordsapp/walkman/user_walkman") != -1) {
-    obj["status"] = 1;
-    obj["buy_time"] = "2000-01-01T13:29:12.961143+00:00";
-    obj["due_date"] = "Austin已破解";
+    obj = {
+        "status" : 1,
+        "id" : "wyjwp",
+        "buy_time" : "2000-01-01T13:29:12.961143+00:00",
+        "user_id" : true,
+        "due_date" : "Austin已破解"
+      }
+      
 }else if (url.indexOf("abc/applets/user_applets") != -1) {
-    for (i = 0; i < obj["objects"].length;i++){
-        obj["objects"][i]["auto_resume"] = true;
-        obj["objects"][i]["buy_time"] = "2000-01-01T13:29:12.961143+00:00";
-        obj["objects"][i]["due_reminded"] = false;
-        obj["objects"][i]["due_date"] = "Austin已破解";
-        obj["objects"][i]["status"] = "IN_USE";
-    }
+    obj = {
+        "objects" : [
+          {
+            "code_name" : "roots",
+            "auto_resume" : true,
+            "buy_time" : "2000-01-01T13:29:12.961143+00:00",
+            "due_date" : "Austin已破解",
+            "due_reminded" : false,
+            "id" : "rosvic",
+            "applet_id" : "bbohes",
+            "price_policy_id" : "bsjlni",
+            "status" : "IN_USE",
+            "user_id" : true,
+            "applet_name" : "智慧词根"
+          },
+          {
+            "code_name" : "affixes",
+            "auto_resume" : true,
+            "buy_time" : "2000-01-01T13:29:12.961143+00:00",
+            "due_date" : "Austin已破解",
+            "due_reminded" : false,
+            "id" : "rphbvz",
+            "applet_id" : "burubg",
+            "price_policy_id" : "avmhu",
+            "status" : "IN_USE",
+            "user_id" : true,
+            "applet_name" : "派生联想"
+          },
+          {
+            "code_name" : "collins",
+            "auto_resume" : true,
+            "buy_time" : "2000-01-01T13:29:12.961143+00:00",
+            "due_date" : "Austin已破解",
+            "due_reminded" : false,
+            "id" : "bafiksxuiuan",
+            "applet_id" : "juuxc",
+            "price_policy_id" : "tmyjl",
+            "status" : "IN_USE",
+            "user_id" : true,
+            "applet_name" : "柯林斯词典"
+          }
+        ]
+      }
+      
 }else if (url.indexOf("wordsutils/hot_sales") != -1) {
     obj["objects"] = []
 }else if (url.indexOf("operation/launch_screen/future_splashes") != -1) {
