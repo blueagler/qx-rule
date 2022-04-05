@@ -10,7 +10,7 @@ const config = {
     testing_facility: "深圳市罗湖医院集团医学检验实验室"
 }
 
-const getTestTime = (minus, showSecond) => `${new Date().getFullYear()}-${('0' + new Date().getMonth()).slice(-2)}-${('0' + new Date().getDate() - minus).slice(-2)} 03:00${showSecond ? ':00' : ''}`;
+const getTestTime = (minus, showSecond) => `${new Date().getFullYear()}-${('0' + new Date().getMonth()).slice(-2)}-${('0' + (new Date().getDate() - minus)).slice(-2)} 03:00${showSecond ? ':00' : ''}`;
 
 if (url.includes("ebus/minshengwxmp/api/r/opc_process/collection")) {
     switch (true) {
@@ -56,9 +56,10 @@ if (url.includes("ebus/minshengwxmp/api/r/opc_process/collection")) {
             ]
             break;
         case url.includes("ykmdetails/nat"):
-            json.data.records = [];
-            for (let i = 1; i <= 10; i++) {
-                json.data.records.push({
+
+            let injectRecords = [];
+            for (let i = 1; i <= new Date().getDate() - 1; i++) {
+                injectRecords.push({
                     "姓名": config.name,
                     "检测结果": "阴性",
                     "申报时间": getTestTime(i, true),
@@ -72,6 +73,10 @@ if (url.includes("ebus/minshengwxmp/api/r/opc_process/collection")) {
                 })
             }
 
+            json.data.records = [
+                ...injectRecords,
+                ...json.data.records
+            ];
     }
 }
 
