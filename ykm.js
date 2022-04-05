@@ -1,4 +1,4 @@
-//^https:\/\/mmykm1.gdbs.gov.cn\/ebus\/minshengwxmp\/api\/r\/opc_process\/collection\/ykm(index\/(vac\/minify|nat)|details\/(vac|nat))
+//^https:\/\/mmykm\d.gdbs.gov.cn\/ebus\/minshengwxmp\/api\/r\/opc_process\/collection\/ykm(index\/(vac\/minify|nat)|details\/(vac|nat))
 let [{ body }, { url }] = [$response, $request],
     json = JSON.parse(body);
 
