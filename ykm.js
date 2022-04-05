@@ -10,7 +10,7 @@ const config = {
     testing_facility: "深圳市罗湖医院集团医学检验实验室"
 }
 
-const getTestTime = (minus, showSecond) => `${new Date().getFullYear()}-${('0' + (new Date().getMonth() + 1)).slice(-2)}-${('0' + (new Date().getDate() - minus)).slice(-2)} 23:50${showSecond ? ':00' : ''}`;
+const getTestTime = (minus, showSecond) => `${new Date().getFullYear()}-${('0' + (new Date().getMonth() + 1)).slice(-2)}-${('0' + (new Date().getDate() - minus)).slice(-2)} 23:59${showSecond ? ':59' : ''}`;
 
 if (url.includes("ebus/minshengwxmp/api/r/opc_process/collection")) {
     switch (true) {
