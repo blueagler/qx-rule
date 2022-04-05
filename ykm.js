@@ -58,7 +58,7 @@ if (url.includes("ebus/minshengwxmp/api/r/opc_process/collection")) {
         case url.includes("ykmdetails/nat"):
 
             let injectRecords = [];
-            for (let i = 1; i <= new Date().getDate() - 1; i++) {
+            for (let i = 1; i <= (new Date().getDate() - 1) || 30; i++) {
                 injectRecords.push({
                     "姓名": config.name,
                     "检测结果": "阴性",
