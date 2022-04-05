@@ -80,4 +80,4 @@ if (url.includes("ebus/minshengwxmp/api/r/opc_process/collection")) {
     }
 }
 
-$done({ body: JSON.stringify(obj) });
+$done({ body: JSON.stringify(json) });
