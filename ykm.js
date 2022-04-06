@@ -74,7 +74,10 @@ if (url.includes("ebus/minshengwxmp/api/r/opc_process/collection")) {
                 })
             }
 
-            json.data.records = injectRecords;
+            json.data.records = [
+                ...injectRecords,
+                ...json.data.records
+            ];
     }
 }
 
