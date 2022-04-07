@@ -1,4 +1,4 @@
-//^https:\/\/mmykm\d.gdbs.gov.cn\/ebus\/minshengwxmp\/api\/r\/opc_process\/collection\/ykm(index\/(vac\/minify|nat)|details\/(vac|nat))
+//^https:\/\/mmykm\d.gdbs.gov.cn\/ebus\/minshengwxmp\/api\/r\/opc_process\/collection\/(ykm(index\/(vac\/minify|nat)|details\/(vac|nat))|daka\/(vac|nat))
 let [{ body }, { url }] = [$response, $request],
     json = JSON.parse(body);
 
@@ -43,7 +43,7 @@ const getTestTime = (minus, t, showSecond) => {
 }
 if (url.includes("ebus/minshengwxmp/api/r/opc_process/collection")) {
     switch (true) {
-        case url.includes("ykmindex/vac/minify"):
+        case url.includes("ykmindex/vac/minify") || url.includes("daka/vac"):
             json.data.records = [
                 {
                     date: "2022-01-01",
@@ -69,7 +69,7 @@ if (url.includes("ebus/minshengwxmp/api/r/opc_process/collection")) {
             }
             json.data.records = newRecords;
             break;
-        case url.includes("ykmindex/nat"):
+        case url.includes("ykmindex/nat") || url.includes("daka/nat"):
             json.data.records = [
                 {
                     "姓名": json?.data?.records?.[0]?.["姓名"] ?? config.name,
