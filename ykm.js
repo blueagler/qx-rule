@@ -16,11 +16,8 @@ const getTestTime = (minus, t, showSecond) => {
         return new Date(d.setDate(d.getDate() - minus)).toISOString().slice(0, 10)
     })()
     const time = (() => {
-        const t8 = 86400000;
-        const t12 = 100800000;
-        const t18 = 122400000;
-        const t2359 = 143940000;
-        const t24 = 144000000;
+
+        const [t8, t12, t18, t2359, t24] = [86400000, 100800000, 122400000, 143940000, 144000000];
 
         let [max, min] = [t8, t24];
 
