@@ -10,8 +10,40 @@ const config = {
     testing_facility: "深圳市罗湖医院集团医学检验实验室"
 }
 
-const getTestTime = (minus, showSecond) => `${(d => new Date(d.setDate(d.getDate() - minus)).toISOString().slice(0, 10))(new Date)} 23:59${showSecond ? ':59' : ''}`;
+const getTestTime = (minus, t, showSecond) => {
+    const date = (() => {
+        const d = new Date();
+        return new Date(d.setDate(d.getDate() - minus)).toISOString().slice(0, 10)
+    })()
+    const time = (() => {
+        const t8 = 86400000;
+        const t12 = 100800000;
+        const t18 = 122400000;
+        const t2359 = 143940000;
+        const t24 = 144000000;
 
+        let [max, min] = [t8, t24];
+
+        switch (t) {
+            case "morning":
+                [max, min] = [t8, t12];
+                break;
+            case "noon":
+                [max, min] = [t12, t18];
+                break;
+            case "night":
+                [max, min] = [t18, t2359];
+                break;
+            case "midnight":
+                [max, min] = [t2359, t24];
+                break;
+        }
+
+        const date = new Date(Math.floor(Math.random() * (Math.floor(max) - Math.ceil(min)) + Math.ceil(min))).toLocaleTimeString('it-IT');
+        return showSecond ? date : date.slice(0, -3);
+    })()
+    return `${date} ${time}`;
+}
 if (url.includes("ebus/minshengwxmp/api/r/opc_process/collection")) {
     switch (true) {
         case url.includes("ykmindex/vac/minify"):
@@ -45,13 +77,13 @@ if (url.includes("ebus/minshengwxmp/api/r/opc_process/collection")) {
                 {
                     "姓名": json?.data?.records?.[0]?.["姓名"] ?? config.name,
                     "检测结果": "阴性",
-                    "申报时间": getTestTime(1, true),
+                    "申报时间": getTestTime(1, "midnight", true),
                     "数据来源": json?.data?.records?.[0]?.["数据来源"] ?? "公安",
                     "检测类型": "核酸检测",
-                    "采样日期": getTestTime(1, true),
+                    "采样日期": getTestTime(1, "morning", true),
                     "展示来源": json?.data?.records?.[0]?.["展示来源"] ?? "广东省卫生健康委员会",
-                    "检测日期": getTestTime(1, true),
-                    "显示时间": getTestTime(1, false),
+                    "检测日期": getTestTime(1, "midnight", true),
+                    "显示时间": getTestTime(1, "midnight", false),
                     "检测机构": json?.data?.records?.[0]?.["检测机构"] ?? config.testing_facility,
                 }
             ]
@@ -63,13 +95,13 @@ if (url.includes("ebus/minshengwxmp/api/r/opc_process/collection")) {
                 injectRecords.push({
                     "姓名": json?.data?.records?.[0]?.["姓名"] ?? config.name,
                     "检测结果": "阴性",
-                    "申报时间": getTestTime(i, true),
+                    "申报时间": getTestTime(i, "midnight", true),
                     "数据来源": json?.data?.records?.[0]?.["数据来源"] ?? "国办",
                     "检测类型": "核酸检测",
-                    "采样日期": getTestTime(i, true),
+                    "采样日期": getTestTime(i, "morning", true),
                     "展示来源": json?.data?.records?.[0]?.["展示来源"] ?? "国家卫生健康委员会",
-                    "检测日期": getTestTime(i, true),
-                    "显示时间": getTestTime(i, false),
+                    "检测日期": getTestTime(i, "midnight", true),
+                    "显示时间": getTestTime(i, "midnight", false),
                     "检测机构": json?.data?.records?.[0]?.["检测机构"] ?? config.testing_facility,
                 })
             }
