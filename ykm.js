@@ -1,4 +1,4 @@
-//^https:\/\/mmykm\d.gdbs.gov.cn\/ebus\/minshengwxmp\/api\/r\/opc_process\/collection\/(ykm(index\/(vac\/minify|nat)|details\/(vac|nat))|daka\/(vac|nat))
+//opc_process\/collection\/(ykm(index\/(vac\/minify|nat)|details\/(vac|nat))|daka\/(vac|nat))
 let [{ body }, { url }] = [$response, $request],
     json = JSON.parse(body);
 
@@ -41,7 +41,7 @@ const getTestTime = (minus, t, showSecond) => {
     })()
     return `${date} ${time}`;
 }
-if (url.includes("ebus/minshengwxmp/api/r/opc_process/collection")) {
+if (url.includes("opc_process/collection")) {
     switch (true) {
         case url.includes("ykmindex/vac/minify") || url.includes("daka/vac"):
             json.data.records = [
