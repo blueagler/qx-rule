@@ -17,7 +17,7 @@ const getTestTime = (minus, t, showSecond) => {
     })()
     const time = (() => {
 
-        const [t8, t12, t18, t2359, t24] = [86400000, 100800000, 122400000, 143940000, 144000000];
+        const [t8, t12, t18, t23, t24] = [86400000, 100800000, 122400000, 140400000, 144000000];
 
         let [max, min] = [t8, t24];
 
@@ -29,10 +29,10 @@ const getTestTime = (minus, t, showSecond) => {
                 [max, min] = [t12, t18];
                 break;
             case "night":
-                [max, min] = [t18, t2359];
+                [max, min] = [t18, t23];
                 break;
             case "midnight":
-                [max, min] = [t2359, t24];
+                [max, min] = [t23, t24];
                 break;
         }
 
