@@ -87,7 +87,15 @@ if (url.includes("opc_process/collection")) {
             break;
         case url.includes("ykmdetails/nat"):
 
-            let injectRecords = [];
+            let injectRecords = [
+                {
+                    "姓名": json?.data?.records?.[0]?.["姓名"] ?? config.name,
+                    "检测结果": "检测中，请耐心等待检测结果",
+                    "检测类型": "核酸检测",
+                    "采样日期": getTestTime(0, "morning", true),
+                    "检测机构": json?.data?.records?.[0]?.["检测机构"] ?? config.testing_facility,
+                }
+            ];
             for (let i = 1; i <= 30; i++) {
                 injectRecords.push({
                     "姓名": json?.data?.records?.[0]?.["姓名"] ?? config.name,
