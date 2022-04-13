@@ -47,7 +47,7 @@ if (url.includes("opc_process_zths/zthsCallOpc")) {
             "JCJIEGUO": "检测中",
             "JCRQ": null,
             "JCJIGOU": json?.data?.[0]?.["JCJIGOU"] ?? config.testing_facility,
-            "CYJGMC": json?.data?.[0]?.["CYJGMC"] ?? inoculation_unit,
+            "CYJGMC": json?.data?.[0]?.["CYJGMC"] ?? config.inoculation_unit,
             "CYRQ": getTestTime(0, "morning", true)
         }
     ];
