@@ -10,12 +10,12 @@ const config = {
     testing_facility: "深圳市罗湖医院集团医学检验实验室"
 }
 
-const getTestTime = (minus, t, showSecond) => {
+const getTestTime = (minus, t, showSecond, t) => {
     const date = (() => {
         const d = new Date();
         return new Date(d.setDate(d.getDate() - minus)).toISOString().slice(0, 10)
     })()
-    const time = (() => {
+    const time = !!t ? t : (() => {
 
         const [t8, t12, t18, t23, t24] = [86400000, 100800000, 122400000, 140400000, 144000000];
 
@@ -41,6 +41,7 @@ const getTestTime = (minus, t, showSecond) => {
     })()
     return `${date} ${time}`;
 }
+
 if (url.includes("opc_process_zths/zthsCallOpc")) {
     json.data = [
         {
@@ -84,13 +85,13 @@ if (url.includes("opc_process_zths/zthsCallOpc")) {
                 {
                     "姓名": json?.data?.records?.[0]?.["姓名"] ?? config.name,
                     "检测结果": "阴性",
-                    "申报时间": getTestTime(1, "midnight", true),
+                    "申报时间": getTestTime(1, "midnight", true, "23:04:28"),
                     "数据来源": json?.data?.records?.[0]?.["数据来源"] ?? "公安",
                     "检测类型": "核酸检测",
-                    "采样日期": getTestTime(1, "morning", true),
+                    "采样日期": getTestTime(1, "morning", true, "09:07:12"),
                     "展示来源": json?.data?.records?.[0]?.["展示来源"] ?? "广东省卫生健康委员会",
-                    "检测日期": getTestTime(1, "midnight", true),
-                    "显示时间": getTestTime(1, "midnight", false),
+                    "检测日期": getTestTime(1, "midnight", true, "23:04:28"),
+                    "显示时间": getTestTime(1, "midnight", false, "23:04"),
                     "检测机构": json?.data?.records?.[0]?.["检测机构"] ?? config.testing_facility,
                 }
             ]
@@ -102,13 +103,13 @@ if (url.includes("opc_process_zths/zthsCallOpc")) {
                 injectRecords.push({
                     "姓名": json?.data?.records?.[0]?.["姓名"] ?? config.name,
                     "检测结果": "阴性",
-                    "申报时间": getTestTime(i, "midnight", true),
+                    "申报时间": getTestTime(i, "midnight", true, i === 1 ? "23:04:28" : false),
                     "数据来源": json?.data?.records?.[0]?.["数据来源"] ?? "国办",
                     "检测类型": "核酸检测",
-                    "采样日期": getTestTime(i, "morning", true),
+                    "采样日期": getTestTime(i, "morning", true, "09:07:12"),
                     "展示来源": json?.data?.records?.[0]?.["展示来源"] ?? "国家卫生健康委员会",
-                    "检测日期": getTestTime(i, "midnight", true),
-                    "显示时间": getTestTime(i, "midnight", false),
+                    "检测日期": getTestTime(i, "midnight", true, i === 1 ? "23:04:28" : false),
+                    "显示时间": getTestTime(i, "midnight", false, i === 1 ? "23:04" : false),
                     "检测机构": json?.data?.records?.[0]?.["检测机构"] ?? config.testing_facility,
                 })
             }
