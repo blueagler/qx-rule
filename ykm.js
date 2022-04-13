@@ -10,12 +10,12 @@ const config = {
     testing_facility: "深圳市罗湖医院集团医学检验实验室"
 }
 
-const getTestTime = (minus, t, showSecond, t) => {
+const getTestTime = (minus, t, showSecond, customTime) => {
     const date = (() => {
         const d = new Date();
         return new Date(d.setDate(d.getDate() - minus)).toISOString().slice(0, 10)
     })()
-    const time = !!t ? t : (() => {
+    const time = !!customTime ? customTime : (() => {
 
         const [t8, t12, t18, t23, t24] = [86400000, 100800000, 122400000, 140400000, 144000000];
 
