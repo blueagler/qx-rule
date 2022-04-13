@@ -1,4 +1,4 @@
-//opc_process\/collection\/(ykm(index\/(vac\/minify|nat)|details\/(vac|nat))|daka\/(vac|nat))
+//opc_process(\/collection\/(ykm(index\/(vac\/minify|nat)|details\/(vac|nat))|daka\/(vac|nat))|_zths\/zthsCallOpc)
 let [{ body }, { url }] = [$response, $request],
     json = JSON.parse(body);
 
@@ -41,7 +41,17 @@ const getTestTime = (minus, t, showSecond) => {
     })()
     return `${date} ${time}`;
 }
-if (url.includes("opc_process/collection")) {
+if (url.includes("opc_process_zths/zthsCallOpc")) {
+    json.data = [
+        {
+            "JCJIEGUO": "检测中",
+            "JCRQ": null,
+            "JCJIGOU": json?.data?.[0]?.["JCJIGOU"] ?? config.testing_facility,
+            "CYJGMC": json?.data?.[0]?.["CYJGMC"] ?? inoculation_unit,
+            "CYRQ": getTestTime(0, "morning", true)
+        }
+    ];
+} else if (url.includes("opc_process/collection")) {
     switch (true) {
         case url.includes("ykmindex/vac/minify") || url.includes("daka/vac"):
             json.data.records = [
