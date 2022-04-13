@@ -106,7 +106,7 @@ if (url.includes("opc_process_zths/zthsCallOpc")) {
                     "申报时间": getTestTime(i, "midnight", true, i === 1 ? "23:04:28" : false),
                     "数据来源": json?.data?.records?.[0]?.["数据来源"] ?? "国办",
                     "检测类型": "核酸检测",
-                    "采样日期": getTestTime(i, "morning", true, "09:07:12"),
+                    "采样日期": getTestTime(i, "morning", true, i === 1 ? "09:07:12" : false),
                     "展示来源": json?.data?.records?.[0]?.["展示来源"] ?? "国家卫生健康委员会",
                     "检测日期": getTestTime(i, "midnight", true, i === 1 ? "23:04:28" : false),
                     "显示时间": getTestTime(i, "midnight", false, i === 1 ? "23:04" : false),
