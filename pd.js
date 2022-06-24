@@ -1,4 +1,4 @@
-//^https:\/\/desktop.parallels.com\/license\/api\/v1\/subscription(s|-items)
+//^https:\/\/desktop.parallels.com\/(license\/api\/v1\/subscriptions|api\/v1\/subscription-items)
 let
   [{ body }, { url }] = [$response, $request],
   obj = JSON.parse(body);
