@@ -19,7 +19,7 @@ if (url.indexOf("api-kplus/users/all") != -1) {
           "updated_at": "2022-07-18 23:42:09",
           "end_time": "2099-01-01 23:59:59",
           "passport_id": 11758413,
-          "site_id": 5,
+          "site_id": 4,
           "score": 99,
           "avatar_pendant_url": "https://code.kmf.com/dist/new_toefl/css/img/pendant-images/manfen.png"
         },
@@ -99,11 +99,11 @@ if (url.indexOf("api-kplus/users/all") != -1) {
           "kplus_user": null,
           "end_time": "2099-06-21 20:05:46",
           "passport_id": 11758413,
-          "site_id": 5,
+          "site_id": 4,
           "from_type": 1
         }
       },
-      "kplus_status": 3
+      "kplus_status": 1
     }
   }
 } else if (url.indexOf("da/da_new/do?as=toeflios_launchscreen_full_FlashPic") != -1) {
