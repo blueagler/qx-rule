@@ -2,30 +2,30 @@
 let [{ body }, { url }] = [$response, $request],
   obj = JSON.parse(body);
 if (url.indexOf("api-kplus/users/all") != -1) {
-  obj = {
-    "status": 200,
-    "message": "成功",
-    "result": {
-      "list": {
-        "11758413": {
-          "id": 39489,
-          "level_id": 1,
-          "avatar_pendant_id": 5,
-          "apply_detail_id": 74882,
-          "is_expire": false,
-          "created_at": "2022-07-05 10:14:37",
-          "start_time": "2022-07-05 10:14:37",
-          "deleted_at": null,
-          "updated_at": "2022-07-18 23:42:09",
-          "end_time": "2099-01-01 23:59:59",
-          "passport_id": 11758413,
-          "site_id": 4,
-          "score": 99,
-          "avatar_pendant_url": "https://code.kmf.com/dist/new_toefl/css/img/pendant-images/manfen.png"
-        },
-      }
-    }
-  }
+  // obj = {
+  //   "status": 200,
+  //   "message": "成功",
+  //   "result": {
+  //     "list": {
+  //       "11758413": {
+  //         "id": 39489,
+  //         "level_id": 1,
+  //         "avatar_pendant_id": 5,
+  //         "apply_detail_id": 74882,
+  //         "is_expire": false,
+  //         "created_at": "2022-07-05 10:14:37",
+  //         "start_time": "2022-07-05 10:14:37",
+  //         "deleted_at": null,
+  //         "updated_at": "2022-07-18 23:42:09",
+  //         "end_time": "2099-01-01 23:59:59",
+  //         "passport_id": 11758413,
+  //         "site_id": 4,
+  //         "score": 99,
+  //         "avatar_pendant_url": "https://code.kmf.com/dist/new_toefl/css/img/pendant-images/manfen.png"
+  //       },
+  //     }
+  //   }
+  // }
 } else if (url.indexOf("api-kplus/users/self") != -1) {
   obj = {
     "status": 200,
