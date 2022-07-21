@@ -1,4 +1,4 @@
-//^https:\/\/api.kmf.com\/(api-kplus\/users\/(self|all)|da\/da_new\/do?as=toeflios_launchscreen_full_FlashPic)
+//^https:\/\/api.kmf.com\/api-kplus\/users\/(self|all)
 let [{ body }, { url }] = [$response, $request],
   obj = JSON.parse(body);
 if (url.indexOf("api-kplus/users/all") != -1) {
@@ -106,8 +106,6 @@ if (url.indexOf("api-kplus/users/all") != -1) {
       "kplus_status": 3
     }
   }
-} else if (url.indexOf("da/da_new/do?as=toeflios_launchscreen_full_FlashPic") != -1) {
-  obj["result"] = {}
 }
 body = JSON.stringify(obj);
 $done({ body });
