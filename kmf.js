@@ -1,7 +1,32 @@
-//^https:\/\/api.kmf.com\/api-kplus\/users\/self
+//^https:\/\/api.kmf.com\/(api-kplus\/users\/(self|all)|da\/da_new\/do?as=toeflios_launchscreen_full_FlashPic)
 let [{ body }, { url }] = [$response, $request],
   obj = JSON.parse(body);
-if (url.indexOf("api-kplus/users/self") != -1) {
+if (url.indexOf("api-kplus/users/all") != -1) {
+  obj = {
+    "status": 200,
+    "message": "成功",
+    "result": {
+      "list": {
+        "11758413": {
+          "id": 39489,
+          "level_id": 1,
+          "avatar_pendant_id": 5,
+          "apply_detail_id": 74882,
+          "is_expire": false,
+          "created_at": "2022-07-05 10:14:37",
+          "start_time": "2022-07-05 10:14:37",
+          "deleted_at": null,
+          "updated_at": "2022-07-18 23:42:09",
+          "end_time": "2099-01-01 23:59:59",
+          "passport_id": 11758413,
+          "site_id": 5,
+          "score": 99,
+          "avatar_pendant_url": "https://code.kmf.com/dist/new_toefl/css/img/pendant-images/manfen.png"
+        },
+      }
+    }
+  }
+} else if (url.indexOf("api-kplus/users/self") != -1) {
   obj = {
     "status": 200,
     "message": "成功",
@@ -74,13 +99,15 @@ if (url.indexOf("api-kplus/users/self") != -1) {
           "kplus_user": null,
           "end_time": "2099-06-21 20:05:46",
           "passport_id": 11758413,
-          "site_id": 4,
+          "site_id": 5,
           "from_type": 1
         }
       },
-      "kplus_status": 1
+      "kplus_status": 3
     }
   }
+} else if (url.indexOf("da/da_new/do?as=toeflios_launchscreen_full_FlashPic") != -1) {
+  obj["result"] = {}
 }
 body = JSON.stringify(obj);
 $done({ body });
