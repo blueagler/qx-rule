@@ -1,4 +1,4 @@
-//^https:\/\license.pdfexpert.com\/api\/2.0\/pdfexpert6\/account\/state
+//^https:\/\/license.pdfexpert.com\/api\/2.0\/pdfexpert6\/account\/state
 let [{ body }, { url }] = [$response, $request],
   obj = JSON.parse(body);
 obj["linkedProducts"] = [
