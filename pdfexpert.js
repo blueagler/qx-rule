@@ -9,7 +9,7 @@ obj["linkedProducts"] = [
           "macos.pe.subscription.pdf-features"
         ],
         "state": "active",
-        "expirationDate": "11:41 28/07/2099",
+        "expirationDate": "11:41 28/09/2022",
         "type": "custom trial",
         "productId": "pdfexpert3-mac-trial"
       }
