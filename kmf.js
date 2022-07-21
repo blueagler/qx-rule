@@ -98,6 +98,7 @@ if (url.indexOf("api-kplus/users/all") != -1) {
           "updated_at": "2022-01-21 20:05:46",
           "kplus_user": {
             "id": 11758413,
+            "is_expire": false,
             "passport_id": 11758413,
             "site_id": 4,
             "level_id": 1,
@@ -111,7 +112,7 @@ if (url.indexOf("api-kplus/users/all") != -1) {
           "from_type": 1
         }
       },
-      "kplus_status": 1
+      "kplus_status": 3
     }
   }
 } else if (url.indexOf("da/da_new/do?as=toeflios_launchscreen_full_FlashPic") != -1) {
