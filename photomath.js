@@ -4,7 +4,6 @@ let [{ body }, { url }] = [$response, $request],
     obj = JSON.parse(body);
 
 obj["content"]["scope"] = [
-    ...obj["content"]["scope"],
     "free:solution",
     "paid:solution",
     "trial:solution",
@@ -21,6 +20,12 @@ obj["content"]["subscription"] = {
     "inGracePeriod": false,
     "packageName": "com.microblink.PhotoMath",
     "started": "1970-01-08T19:07:03.000Z"
+};
+delete obj["content"]["subscription"]["subscriptionSharing"];
+
+obj["content"]["subscription"]["tier"] = {
+    "added": "1970-01-08T19:05:42.540Z",
+    "level": "genius"
 };
 
 body = JSON.stringify(obj);
