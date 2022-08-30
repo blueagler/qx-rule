@@ -7,8 +7,8 @@ if (url.indexOf("getAccByAccID") != -1) {
   // obj["listmoney"] = obj["listvalue1"] = obj["listvalue"] = "0.5,0.5,0.5,0.5"
 } else if (url.indexOf("getaccbywxidNew") != -1) {
   obj["accmoneyr"] = obj["accmoneyg"] = 9999999999;
-  obj["iscardsave"] = 1;
-  obj["isdirectxf"] = 0;
+  // obj["iscardsave"] = 1;
+  // obj["isdirectxf"] = 0;
 }
 
 body = JSON.stringify(obj);
