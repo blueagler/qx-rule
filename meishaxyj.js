@@ -4,7 +4,7 @@ let [{ body }, { url }] = [$response, $request],
 if (url.indexOf("getAccByAccID") != -1) {
   obj["moneyg"] = obj["moneyr"] = 9999999999;
 } else if (url.indexOf("getDevParaByMac") != -1) {
-  obj["listmoney"] = obj["listvalue1"] = obj["listvalue"] = "0.5,0.5,0.5,0.5"
+  // obj["listmoney"] = obj["listvalue1"] = obj["listvalue"] = "0.5,0.5,0.5,0.5"
 } else if (url.indexOf("getaccbywxidNew") != -1) {
   obj["accmoneyr"] = obj["accmoneyg"] = 9999999999;
 }
