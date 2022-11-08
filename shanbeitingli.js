@@ -1,6 +1,6 @@
 //^https:\/\/apiv3.shanbay.com\/listen\/user\/vip
-let [{ body }, { url }] = [$response, $request],
-  obj = JSON.parse(body);
+const { body } = $response;
+let obj = JSON.parse(body);
 obj = {
   ...obj,
   "vip_expire_at": "2099-01-01",
