@@ -3,6 +3,14 @@ let obj = JSON.parse($response.body);
 obj = {
   ...obj,
   "svipExpire": 1722386993000,
-  "svip": true
+  "svip": true,
+  "expire": 1722386993000,
+  "vip": true,
+  "purchasedPlanIds": [
+    "38"
+  ],
+  "copyWritings": [
+    "Blueagle已破解会员"
+  ]
 }
 $done({ body: JSON.stringify(obj) });
