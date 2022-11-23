@@ -7,7 +7,7 @@ obj = {
   "expire": 1722386993000,
   "vip": true,
   "purchasedPlanIds": [
-    "38"
+    "29"
   ],
   "copyWritings": [
     "Blueagle已破解会员"
