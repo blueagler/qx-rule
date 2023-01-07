@@ -1,4 +1,4 @@
-//https:\/\/replika.ai\/api\/mobile\/1.5\/(payment_subscriptions|store\/login_reward)
+//https:\/\/replika.ai\/api\/mobile\/1.5\/(payment_subscriptions)
 let [{ body }, { url }] = [$response, $request],
   obj = JSON.parse(body),
   path = new URL(url).pathname;
@@ -30,9 +30,6 @@ switch (path) {
         "subscription_state": "PaymentReceived"
       }
     }
-    break;
-  case "/api/mobile/1.5/store/login_reward":
-    obj["has_subscription"] = true;
     break;
 }
 body = JSON.stringify(obj);
