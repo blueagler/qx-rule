@@ -37,7 +37,8 @@ switch (path) {
         "ar_calls",
         "voice_message",
         "backgrounds",
-        "send_photo"
+        "send_photo",
+        "full_library_access"
       ])
     ]
 }
