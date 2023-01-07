@@ -11,8 +11,21 @@ switch (path) {
         { "name": "voice_message" },
         { "name": "backgrounds" },
         { "name": "send_photo" },
+        { "name": "full_library_access" }
       ])
     ];
+    obj["subscription"] = {
+      "subscription_type": "IN_APP",
+      "subscription_state": "FreeTrial",
+      "source": "paypal",
+      "expiration": 999999999,
+      "created": 0,
+      "price": {
+        "amount": 1,
+        "currency": "CNY"
+      },
+      "product_id": "a"
+    };
     break;
   case "/api/mobile/1.5/store/login_reward":
     obj["has_subscription"] = true;
