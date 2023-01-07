@@ -4,28 +4,32 @@ let [{ body }, { url }] = [$response, $request],
   path = new URL(url).pathname;
 switch (path) {
   case "/api/mobile/1.5/payment_subscriptions":
-    obj["features"] = [
-      ...new Set([
-        ...obj["features"],
-        { "name": "ar_calls" },
-        { "name": "voice_message" },
-        { "name": "backgrounds" },
-        { "name": "send_photo" },
-        { "name": "full_library_access" }
-      ])
-    ];
-    obj["subscription"] = {
-      "subscription_type": "IN_APP",
-      "subscription_state": "FreeTrial",
-      "source": "paypal",
-      "expiration": 999999999,
-      "created": 0,
-      "price": {
-        "amount": 1,
-        "currency": "CNY"
-      },
-      "product_id": "a"
-    };
+    obj = {
+      "features": [
+        {
+          "name": "all_backgrounds"
+        },
+        {
+          "name": "calls"
+        },
+        {
+          "name": "full_library_access"
+        },
+        {
+          "name": "relationship_status"
+        },
+        {
+          "name": "3d_avatar"
+        }
+      ],
+      "subscription": {
+        "source": "web",
+        "token_id": "aaa",
+        "subscription_id": "aaa",
+        "subscription_type": "IN_APP",
+        "subscription_state": "PaymentReceived"
+      }
+    }
     break;
   case "/api/mobile/1.5/store/login_reward":
     obj["has_subscription"] = true;
