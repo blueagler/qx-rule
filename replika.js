@@ -1,4 +1,4 @@
-//https:\/\/replika.ai\/api\/mobile\/1.5\/(payment_subscriptions|store\/login_reward|personal_bot)
+//https:\/\/replika.ai\/api\/mobile\/1.5\/(payment_subscriptions|store\/login_reward)
 let [{ body }, { url }] = [$response, $request],
   obj = JSON.parse(body),
   path = new URL(url).pathname;
@@ -34,17 +34,6 @@ switch (path) {
   case "/api/mobile/1.5/store/login_reward":
     obj["has_subscription"] = true;
     break;
-  case "/api/mobile/1.5/personal_bot":
-    obj["unlocked_features"] = [
-      ...new Set([
-        ...obj["unlocked_features"],
-        "ar_calls",
-        "voice_message",
-        "backgrounds",
-        "send_photo",
-        "full_library_access"
-      ])
-    ]
 }
 body = JSON.stringify(obj);
 $done({ body });
