@@ -5,10 +5,7 @@ obj = {
   "expire": 1822386993000,
   "vip": true,
   "purchasedPlanIds": [
-    "32"
-  ],
-  "copyWritings": [
-    "Blueagle已破解会员"
+    "30"
   ]
 }
 $done({ body: JSON.stringify(obj) });
