@@ -6,7 +6,7 @@ switch (path) {
   case "/api/mobile/1.5/payment_subscriptions":
     obj["features"] = [
       ...new Set([
-        ...obj["unlocked_features"],
+        ...obj["features"],
         { "name": "ar_calls" },
         { "name": "voice_message" },
         { "name": "backgrounds" },
