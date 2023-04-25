@@ -3,7 +3,7 @@ let [{ body }, { url }] = [$response, $request],
   obj = JSON.parse(body),
   path = new URL(url).pathname;
 switch (path) {
-  case path.match(/^\/api\/users/):
+  case path.match(/api\/users/):
     obj = {
       ...obj,
       privilege: [
