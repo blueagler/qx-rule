@@ -1,4 +1,4 @@
-//^https:\/\/account\.wps\.cn\/api\/users
+//^https:\/\/(account|vas)\.wps\.cn\/(api\/users|query\/api\/v1\/list_purchase_info)
 
 let [{ body }, { url }] = [$response, $request];
 
@@ -25,6 +25,18 @@ const handler = {
         { memberid: 12, name: "稻壳会员", expire_time: 32536799999 },
         { memberid: 100, name: "企业用户", expire_time: 32536799999 },
         { memberid: 83, name: "小金库", expire_time: 32536799999 },
+      ]
+    }
+  }),
+  "query\/api\/v1\/list_purchase_info": obj => ({
+    ...obj,
+    data: {
+      ...obj.data,
+      merchandises: [
+        { sku_key: 'vip_pro_plus', effect_time: 0, name: "超级会员Pro", expire_time: 32536799999, type: "vip" },
+        { sku_key: '40', effect_time: 0, name: "超级会员", expire_time: 32536799999, type: "vip" },
+        { sku_key: '20', effect_time: 0, name: "WPS会员", expire_time: 32536799999, type: "vip" },
+        { sku_key: '12', effect_time: 0, name: "稻壳会员", expire_time: 32536799999, type: "vip" }
       ]
     }
   })
