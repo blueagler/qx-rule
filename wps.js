@@ -3,7 +3,7 @@
 let [{ body }, { url }] = [$response, $request];
 
 const handler = {
-  "api\/users": obj => ({
+  "api\/users\/": obj => ({
     ...obj,
     privilege: [
       { spid: "data_recover", times: 0, expire_time: 32536799999 },
