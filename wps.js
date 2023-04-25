@@ -1,8 +1,7 @@
 //^https:\/\/account\.wps\.cn\/api\/users
-let [{ body }, { url }] = [$response, $request],
-  obj = JSON.parse(body),
-  path = new URL(url).pathname;
-handler = {
+let [{ body }, { url }] = [$response, $request];
+
+const handler = {
   "api\/users": obj => ({
     ...obj,
     privilege: [
@@ -28,11 +27,10 @@ handler = {
       ]
     }
   })
-
 };
 for (const p in handler)
   if (new RegExp(p).test(path)) {
-    body = JSON.stringify(handler[p](obj));
+    body = JSON.stringify(handler[p](JSON.parse(body)));
     break;
   }
 
