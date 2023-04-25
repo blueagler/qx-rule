@@ -1,12 +1,5 @@
 //^https:\/\/account\.wps\.cn\/api\/users
 
-const $response = {
-  body: `{"exp":0,"level":1,"privilege":[],"result":"ok","server_time":1682419211,"total_buy":0,"total_cost":0,"userid":470102475,"vip":{"name":"注册用户","has_ad":1,"memberid":10,"expire_time":1993459211,"enabled":[]},"wealth":0}`
-}
-const $request = {
-  url: "https://account.wps.cn/api/users",
-}
-
 let [{ body }, { url }] = [$response, $request];
 
 const handler = {
