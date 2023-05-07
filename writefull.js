@@ -3,19 +3,16 @@
 let [{ body }, { url }] = [$response, $request];
 
 const handler = {
-  "ispremium": obj => ({
+  "ispremium": _ => ({
     isPaid: true,
     isPremium: true,
   }),
   "config": obj => ({
     ...obj,
-    data: {
-      ...obj.data,
-      account: {
-        ...obj.data.account,
-        textgpt: {
-          enabled: true,
-        }
+    account: {
+      ...obj.account,
+      textgpt: {
+        enabled: true,
       }
     }
   })
