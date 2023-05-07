@@ -11,7 +11,7 @@ const handler = {
     ...obj,
     account: {
       ...obj.account,
-      textgpt: {
+      texgpt: {
         enabled: true,
       }
     }
