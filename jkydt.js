@@ -2,61 +2,58 @@
 
 let [{ body }, { url }] = [$response, $request];
 
-function modifyRights(obj) {
-  obj.beginTime = "1970-01-01";
-  obj.endTime = "2099-12-31";
-  obj.status = "2";
-  obj.level = 1;
-  return obj;
+function modifyStoreRight(d) {
+  d.beginTime = "1970-01-01";
+  d.endTime = "2099-12-31";
+  d.status = "2";
 }
 
 const handlers = [
-  {
-    regex: /store\/(h5\/)?batchCheckRights/,
-    type: "JSON",
-    handler: (obj) => {
-      for (const vipKey in obj.result) {
-        obj.result[vipKey] = modifyRights(obj.result[vipKey]);
-      }
-      return obj;
-    },
-  },
-  {
-    regex: /store\/(h5\/)?checkRights/,
-    type: "JSON",
-    handler: (obj) => {
-      obj.result = modifyRights(obj.result);
-      return obj;
-    },
-  },
-  {
-    regex: /rights\/checkRights/,
-    type: "JSON",
-    handler: (obj) => {
-      obj.result.rights.forEach((right) => {
+  [
+    /rights\/checkRights/,
+    (d) => {
+      for (const right of d.result.rights) {
         right.enable = "1";
-      });
-      return obj;
+      }
+      return d;
     },
-  },
-  {
-    regex: /jxedtLive\/h5\/topicDetail/,
-    type: "JSON",
-    handler: (obj) => {
-      obj.result.topicIntro.boughtState = "1";
-      return obj;
+    1,
+  ],
+  [
+    /store\/(h5\/)?checkRights/,
+    (d) => {
+      modifyStoreRight(d.result);
+      return d;
     },
-  },
+    1,
+  ],
+  [
+    /store\/(h5\/)?batchCheckRights/,
+    (d) => {
+      for (const vipKey in d.result) {
+        modifyStoreRight(d.result[vipKey]);
+      }
+      return d;
+    },
+    1,
+  ],
+  [
+    /jxedtLive\/h5\/topicDetail/,
+    (d) => {
+      d.result.topicIntro.boughtState = "1";
+      return d;
+    },
+    1,
+  ],
 ];
 
-handlers.forEach((handler) => {
-  if (handler.regex.test(url)) {
-    if (handler.type === "JSON") {
-      body = JSON.stringify(handler.handler(JSON.parse(body)));
-    } else {
-      body = handler.handler(body);
-    }
+for (const handler of handlers) {
+  if (handler[0].test(url)) {
+    body = !!handler[2]
+      ? JSON.stringify(handler[1](JSON.parse(body)))
+      : handler[1](body);
+    break;
   }
-});
+}
 
 $done({ body });
