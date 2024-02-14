@@ -1,4 +1,4 @@
-//^https:\/\/vipapi.ksedt.com\/(store\/(h5\/)?(batchCheckRights|checkRights)|rights\/(checkRights|bindvcsr))
+//^https:\/\/(vipapi.ksedt.com\/(store\/(h5\/)?(batchCheckRights|checkRights)|rights\/checkRights)|op.ksedt.com\/jxedtLive\/h5\/topicDetail)
 
 let [{ body }, { url }] = [$response, $request];
 
@@ -40,10 +40,10 @@ const handlers = [
     },
   },
   {
-    regex: /rights\/bindvcsr/,
+    regex: /jxedtLive\/h5\/topicDetail/,
     type: "JSON",
     handler: (obj) => {
-      obj.result.bindState = "2";
+      obj.result.topicIntro.boughtState = "1";
       return obj;
     },
   },
