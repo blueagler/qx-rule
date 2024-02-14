@@ -1,4 +1,4 @@
-//^https:\/\/vipapi.ksedt.com\/(store\/(batchCheckRights|checkRights)|rights\/checkRights)
+//^https:\/\/vipapi.ksedt.com\/(store\/(h5\/)?(batchCheckRights|checkRights)|rights\/checkRights)
 
 let [{ body }, { url }] = [$response, $request];
 
@@ -12,7 +12,7 @@ function modifyRights(obj) {
 
 const handlers = [
   {
-    regex: /store\/batchCheckRights/,
+    regex: /store\/(h5\/)?batchCheckRights/,
     type: "JSON",
     handler: (obj) => {
       for (const vipKey in obj.result) {
@@ -22,7 +22,7 @@ const handlers = [
     },
   },
   {
-    regex: /store\/checkRights/,
+    regex: /store\/(h5\/)?checkRights/,
     type: "JSON",
     handler: (obj) => {
       obj.result = modifyRights(obj.result);
@@ -38,7 +38,7 @@ const handlers = [
       });
       return obj;
     },
-  },
+  }
 ];
 
 handlers.forEach((handler) => {
