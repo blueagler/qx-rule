@@ -1,4 +1,4 @@
-//^https:\/\/(fund.10jqka.com.cn\/marketing\/user\/level\/query\/level
+//^https:\/\/fund.10jqka.com.cn\/marketing\/user\/level\/query\/level
 
 let [{ body }, { url }] = [$response, $request];
 
