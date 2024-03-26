@@ -1,4 +1,4 @@
-//^https:\/\/app-api.yangjibao.com\/account
+//^https:\/\/(app-api|wx).yangjibao.com\/(account|wxapi\/fund_holdup_ranking)
 
 let [{ body }, { url }] = [$response, $request];
 
@@ -18,7 +18,15 @@ const handlers = [
             return d;
         },
         1,
-    ]
+    ],
+    [
+        /wxapi\/fund_holdup_ranking/,
+        (d) => {
+            d.data.vip_label = true;
+            return d;
+        },
+        1,
+    ],
 ];
 
 for (const handler of handlers) {
