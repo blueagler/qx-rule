@@ -1,4 +1,4 @@
-//^https:\/\/(vipapi.ksedt.com\/(store\/(h5\/)?(batchCheckRights|checkRights)|rights\/checkRights)|op.ksedt.com\/jxedtLive\/h5\/topicDetail|kaoshiapi.ksedt.com\/realPlace\/getResourceBycityId)
+//^https:\/\/(vipapi.ksedt.com\/(store\/(h5\/)?(batchCheckRights|checkRights)|rights\/checkRights)|op.ksedt.com\/jxedtLive\/h5\/topicDetail|kaoshiapi.ksedt.com\/(realPlace\/getResourceBycityId|exam\/place\/video\/list))
 
 let [{ body }, { url }] = [$response, $request];
 
@@ -48,13 +48,25 @@ const handlers = [
   [
     /realPlace\/getResourceBycityId/,
     (d) => {
-      d.result.status = "2";
+      d.result.status = "1";
       d.result.beginTime = "1970-01-01";
       d.result.endTime = "2099-12-31";
       return d;
     },
     1,
   ],
+  [
+    /exam\/place\/video\/list/,
+    (d) => {
+      d.result.buyStatus = 1;
+      d.result.vipStatus = 1;
+      d.result.videoList.forEach((video) => {
+        video.src = video.isM3U8 === 1 ? video.tryVideoM3U8 : video.tryVideo;
+      });
+      return d;
+    },
+    1,
+  ]
 ];
 
 for (const handler of handlers) {
