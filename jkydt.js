@@ -48,9 +48,8 @@ const handlers = [
   [
     /realPlace\/getResourceBycityId/,
     (d) => {
+      modifyStoreRight(d.result);
       d.result.status = "1";
-      d.result.beginTime = "1970-01-01";
-      d.result.endTime = "2099-12-31";
       return d;
     },
     1,
@@ -61,7 +60,10 @@ const handlers = [
       d.result.buyStatus = 1;
       d.result.vipStatus = 1;
       d.result.videoList.forEach((video) => {
-        video.src = video.isM3U8 === 1 ? video.tryVideoM3U8 : video.tryVideo;
+        if (!video.src && video.m3u8Video) {
+          video.src = video.m3u8Video;
+          video.isM3U8 = 1;
+        }
       });
       return d;
     },
