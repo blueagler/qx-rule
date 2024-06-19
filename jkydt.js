@@ -1,4 +1,4 @@
-//^https:\/\/(vipapi.ksedt.com\/(store\/(h5\/)?(batchCheckRights|checkRights)|rights\/checkRights)|op.ksedt.com\/jxedtLive\/h5\/topicDetail)
+//^https:\/\/(vipapi.ksedt.com\/(store\/(h5\/)?(batchCheckRights|checkRights)|rights\/checkRights)|op.ksedt.com\/jxedtLive\/h5\/topicDetail|kaoshiapi.ksedt.com\/realPlace\/getResourceBycityId)
 
 let [{ body }, { url }] = [$response, $request];
 
@@ -41,6 +41,16 @@ const handlers = [
     /jxedtLive\/h5\/topicDetail/,
     (d) => {
       d.result.topicIntro.boughtState = "1";
+      return d;
+    },
+    1,
+  ],
+  [
+    /realPlace\/getResourceBycityId/,
+    (d) => {
+      d.result.status = "2";
+      d.result.beginTime = "1970-01-01";
+      d.result.endTime = "2099-12-31";
       return d;
     },
     1,
